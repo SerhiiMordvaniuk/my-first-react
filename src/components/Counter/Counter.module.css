@@ -1,0 +1,20 @@
+
+
+.wrapper{
+    padding: 10px;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #cdcdcd;
+    border-radius: 5px;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.hidden{
+    display: none;
+}

@@ -1,5 +1,6 @@
-
-import { useState } from "react";
+import Todo from "./Todo/Todo";
+import { useState, useEffect } from "react";
+import Counter from "./Counter/Counter";
 // import { build } from "vite";
 
 
@@ -71,40 +72,83 @@ import { useState } from "react";
 
 
 
-const App = () => {
-  const [values, setValues] = useState({
-    x: 0,
-    y: 0,
-	  });
+// const App = () => {
+//   const [values, setValues] = useState({
+//     x: 0,
+//     y: 0,
+// 	  });
 	
-	const updateX = () => {
-			setValues({
-			...values,
-			x: values.x + 1
-		});
-	};
+// 	const updateX = () => {
+// 			setValues({
+// 			...values,
+// 			x: values.x + 1
+// 		});
+// 	};
 
-	const updateY = () => {
-		setValues({
-			...values,
-			y: values.y + 1
-		});
-	};
+// 	const updateY = () => {
+// 		setValues({
+// 			...values,
+// 			y: values.y + 1
+// 		});
+// 	};
+
+//   return (
+//     <div>
+//       <p>
+//         x: {values.x}, y: {values.y}
+//       </p>
+
+//       <button onClick={updateX}>Update x</button>
+//       <button onClick={updateY}>Update y</button>
+//     </div>
+//   );
+// };
+
+
+// const App = () => {
+//   const [click, setClicks] = useState(() => {
+//     const saveClick = window.localStorage.getItem("keyClick");
+
+//     if (saveClick !== null) {
+//       return Number(saveClick)
+//     }
+//     return 0
+//   })
+
+
+//   const plusClick = () => {
+//     setClicks(click +1)
+//   }
+
+//   const clear = () => {
+//     setClicks(0)
+//   }
+
+//   useEffect(() => {
+//     window.localStorage.setItem("keyClick", click)
+//   }, [click])
+
+//   return (
+//    <>
+//       <button onClick={plusClick}>Click: {click}</button>
+//       <button onClick={clear}>Clear</button>
+    
+//     </>
+//   )
+// };
+
+const App = () => {
+  
 
   return (
-    <div>
-      <p>
-        x: {values.x}, y: {values.y}
-      </p>
+    <>
+    {/* <><Todo></Todo></> */}
+    <Counter/>
+    </>
+  )
 
-      <button onClick={updateX}>Update x</button>
-      <button onClick={updateY}>Update y</button>
-    </div>
-  );
-};
-
-
+}
 
 export default App
 
-
+ 
