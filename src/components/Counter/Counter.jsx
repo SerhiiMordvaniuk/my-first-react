@@ -1,14 +1,30 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import s from "./Counter.module.css"
 
 
 const Counter = () => {
     
-    const lalala = 5;
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(() => {
+        let localCount = JSON.parse(localStorage.getItem("count"))
+        if (localCount !== null) {
+            return localCount
+        }
+        return 1
+    });
 
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(() => {
+        const localeStep = JSON.parse(localStorage.getItem("step"))
+        if (localeStep !== null) {
+            return localeStep
+        }
+        return 1
+    })
+
+    const locaData = useEffect(() => {
+        localStorage.setItem("count", JSON.stringify(count))
+        localStorage.setItem("step", JSON.stringify(step))
+    }, [count, step])
 
     const handleClickPus = () => {
         setCount(prev => prev + step)        
@@ -34,9 +50,9 @@ const Counter = () => {
             } />
             <h1>{count}</h1>
             <div className={s.buttons}>
-                <button onClick={handleClickMinus}>Minus</button>
-                <button onClick={handleReset}>Reset</button>
-                <button onClick={handleClickPus} {lalala ? alert("lalala") : alert("aaaa") } disabled="disablet"   >Plus</button> 
+                <button onClick={handleClickMinus} disabled={count ? false : true}>Minus</button>
+                <button onClick={handleReset} disabled={count === 1 ? true : false} >Reset </button>
+                <button onClick={handleClickPus}>Plus</button> 
             </div>
         </div>
     )
